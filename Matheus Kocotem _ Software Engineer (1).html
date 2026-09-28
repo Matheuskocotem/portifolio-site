@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Matheus Kocotem | Software Engineer</title>
+<meta name="description" content="Matheus Kocotem, Senior Software Engineer. Backend with Java, test automation, Kubernetes and GitOps.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F3F5F9; --panel: #FFFFFF; --ink: #172033; --muted: #5E687B; --faint: #8A93A4;
+  --line: #DDE2EA; --accent: #2657A8; --accent-bg: #E6EDF8;
+  --term: #172033; --term-ink: #D9DEE7; --term-dim: #8C95A6; --ok: #6FCF9F;
+  --font: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: light; box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #10151D; --panel: #171E29; --ink: #E4E8EF; --muted: #A0A9B8; --faint: #6F7889;
+    --line: #262F3D; --accent: #86AEEE; --accent-bg: #1B2638; --term: #0B0F15; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --bg: #10151D; --panel: #171E29; --ink: #E4E8EF; --muted: #A0A9B8; --faint: #6F7889;
+  --line: #262F3D; --accent: #86AEEE; --accent-bg: #1B2638; --term: #0B0F15; color-scheme: dark; }
+html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 2rem); scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+*, *::before, *::after { box-sizing: inherit; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 1.0625rem; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+.layout { max-width: 72rem; margin: 0 auto; padding: 0 2rem; display: grid; grid-template-columns: 21rem 1fr; gap: 5rem; }
+@media (max-width: 960px) { .layout { grid-template-columns: 1fr; gap: 0; padding: 0 1.5rem; } }
+
+/* Left column */
+.side { position: sticky; top: 0; height: 100vh; height: 100dvh; padding: 5rem 0 3rem; display: flex; flex-direction: column; }
+@media (max-width: 960px) { .side { position: static; height: auto; padding: 4rem 0 1rem; } }
+.side h1 { font-size: 2.75rem; line-height: 1.05; letter-spacing: -0.03em; margin: 0 0 0.6rem; font-weight: 700; }
+.side .role { font-size: 1.2rem; font-weight: 500; margin: 0 0 1rem; }
+.side .lede { color: var(--muted); margin: 0 0 0.9rem; max-width: 20rem; }
+.side .place { color: var(--faint); font-size: 0.95rem; margin: 0; }
+.toc { margin: 3rem 0 0; padding: 0; list-style: none; }
+.toc a { display: flex; align-items: center; gap: 0.9rem; padding: 0.4rem 0; color: var(--faint); text-decoration: none; font-weight: 500; font-size: 0.95rem; }
+.toc a::before { content: ""; width: 1.75rem; height: 1px; background: currentColor; transition: width .2s ease; }
+.toc a:hover, .toc a.active { color: var(--ink); }
+.toc a.active::before { width: 3.5rem; }
+@media (max-width: 960px) { .toc { display: none; } }
+.social { margin-top: auto; display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; }
+@media (max-width: 960px) { .social { margin-top: 1.75rem; } }
+.social a { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.5rem 0.8rem; border: 1px solid var(--line); border-radius: 8px;
+  color: var(--ink); text-decoration: none; font-size: 0.925rem; background: var(--panel); }
+.social a:hover { border-color: var(--accent); color: var(--accent); }
+.social svg { width: 1rem; height: 1rem; fill: currentColor; }
+.theme { background: none; border: 0; color: var(--faint); cursor: pointer; font: inherit; font-size: 0.9rem; padding: 0.5rem 0.25rem; }
+.theme:hover { color: var(--ink); }
+
+/* Right column */
+main { padding: 5rem 0 2rem; }
+@media (max-width: 960px) { main { padding-top: 1rem; } }
+section { margin-bottom: 6rem; }
+h2 { font-size: 1.05rem; font-weight: 600; margin: 0 0 1.5rem; color: var(--ink); display: flex; align-items: center; gap: 1rem; }
+h2::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.about p { margin: 0 0 1.1rem; color: var(--muted); max-width: 38rem; }
+.about strong { color: var(--ink); font-weight: 600; }
+
+/* Experience runner */
+.runner { background: var(--term); color: var(--term-ink); border-radius: 12px; padding: 1.1rem 0.9rem 1.2rem;
+  font-family: var(--mono); font-size: 0.84rem; line-height: 1.7; overflow-x: auto; box-shadow: 0 18px 40px -24px rgba(23,32,51,.55); }
+.runner .cmd { color: var(--term-dim); margin: 0 0 0.75rem 0.45rem; }
+.runner .cmd b { color: var(--term-ink); font-weight: 400; }
+.jobs { list-style: none; margin: 0; padding: 0; }
+.jobs button { all: unset; box-sizing: border-box; cursor: pointer; width: 100%; padding: 0.35rem 0.45rem; border-radius: 5px;
+  display: grid; grid-template-columns: auto 1fr auto; gap: 0.8rem; align-items: baseline; }
+.jobs button:hover { background: rgba(255,255,255,0.06); }
+.jobs button:focus-visible { outline: 2px solid var(--ok); }
+.pass { background: var(--ok); color: #0B0F15; font-weight: 600; padding: 0 0.4rem; border-radius: 3px; font-size: 0.76rem; }
+.jobs .co { font-weight: 600; }
+.jobs .ti { color: var(--term-dim); }
+.jobs .when { color: var(--term-dim); white-space: nowrap; }
+.jobs .arrow { display: inline-block; color: var(--term-dim); margin-left: 0.35rem; transition: transform .15s ease; }
+.jobs li.open .arrow { transform: rotate(90deg); }
+.jobs .detail { display: none; padding: 0.25rem 0 0.9rem 3.95rem; color: #AEB6C3; }
+.jobs li.open .detail { display: block; }
+.jobs .detail ul { margin: 0.35rem 0 0; padding: 0; list-style: none; }
+.jobs .detail li { position: relative; padding-left: 1.3rem; }
+.jobs .detail li::before { content: "✓"; position: absolute; left: 0; color: var(--ok); }
+.jobs .stack { margin-top: 0.5rem; color: var(--term-dim); }
+.runner .summary { margin: 1rem 0 0 0.45rem; padding-top: 0.8rem; border-top: 1px dashed rgba(255,255,255,0.15); color: var(--term-dim); }
+.runner .summary .ok { color: var(--ok); font-weight: 600; }
+.hint { color: var(--faint); font-size: 0.9rem; margin: 0.75rem 0 0; }
+.resume { display: inline-block; margin-top: 1.25rem; font-weight: 600; }
+@media (max-width: 600px) { .jobs button { grid-template-columns: auto 1fr; } .jobs .when { grid-column: 2; } .jobs .detail { padding-left: 1.2rem; } }
+
+/* Projects & articles rows */
+.rows { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+.row { position: relative; display: grid; grid-template-columns: 7rem 1fr; gap: 1.5rem; padding: 1.25rem; margin: 0 -1.25rem; border-radius: 10px;
+  border: 1px solid transparent; transition: background .15s ease, border-color .15s ease; }
+.row:hover { background: var(--panel); border-color: var(--line); }
+.row .side-meta { color: var(--faint); font-size: 0.875rem; padding-top: 0.2rem; }
+.row h3 { margin: 0 0 0.4rem; font-size: 1.1rem; font-weight: 600; line-height: 1.35; }
+.row h3 a { color: var(--ink); text-decoration: none; }
+.row h3 a::after { content: ""; position: absolute; inset: 0; border-radius: 10px; }
+.row:hover h3 a { color: var(--accent); }
+.row p { margin: 0 0 0.75rem; color: var(--muted); font-size: 1rem; }
+.tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0; padding: 0; list-style: none; }
+.tags li { background: var(--accent-bg); color: var(--accent); font-size: 0.8rem; font-weight: 500; padding: 0.15rem 0.6rem; border-radius: 999px; }
+.row .small { color: var(--faint); font-size: 0.875rem; }
+@media (max-width: 600px) { .row { grid-template-columns: 1fr; gap: 0.3rem; } }
+
+/* Skills */
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1.5rem 2rem; }
+.skills h3 { font-size: 0.95rem; margin: 0 0 0.6rem; font-weight: 600; }
+
+footer { color: var(--faint); font-size: 0.9rem; padding: 0 0 4rem; max-width: 36rem; }
+</style>
+</head>
+<body>
+<div class="layout">
+  <header class="side">
+    <h1 id="name"></h1>
+    <p class="role" id="role"></p>
+    <p class="lede" id="lede"></p>
+    <p class="place" id="place"></p>
+    <ul class="toc" id="toc">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#articles">Articles</a></li>
+      <li><a href="#skills">Skills</a></li>
+    </ul>
+    <div class="social" id="social"></div>
+  </header>
+
+  <main>
+    <section id="about" class="about">
+      <h2>About</h2>
+      <div id="about-text"></div>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="runner">
+        <div class="cmd">$ <b>npm test career</b></div>
+        <ul class="jobs" id="jobs"></ul>
+        <div class="summary" id="summary"></div>
+      </div>
+      <p class="hint">Click a role to see the details.</p>
+      <a class="resume" id="resume" target="_blank" rel="noopener">View full profile on LinkedIn</a>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <ul class="rows" id="projects-list"></ul>
+    </section>
+
+    <section id="articles">
+      <h2>Articles</h2>
+      <ul class="rows" id="posts"></ul>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills" id="skill-list"></div>
+    </section>
+
+    <footer id="footer"></footer>
+  </main>
+</div>
+
+<script>
+/* ===== Edit your info here ===== */
+const profile = {
+  name: "Matheus Kocotem",
+  role: "Senior Software Engineer",
+  lede: "I build backend services in Java and came up through QA, so tests and pipelines are part of how I work.",
+  place: "Paraná, Brazil. Working remotely.",
+  email: "ms924420@gmail.com",
+  linkedin: "https://www.linkedin.com/in/matheus-kocotem/",
+  github: "https://github.com/Matheuskocotem",
+  devto: "https://dev.to/m_kocotem_1b69865766c653",
+  about: [
+    "I started in IT support at the Guarapuava city hall in 2023. In 2024 I joined <strong>Capgemini</strong> as a backend Java developer, and in 2025 I moved to QA at <strong>3C Plus</strong>, where I built end-to-end and API test suites and got them running in the CI pipeline.",
+    "Along the way I did a contract with <strong>Tata Consultancy Services</strong> on an AWS project, working with Docker, Kubernetes and Terraform.",
+    "Today I'm a Senior Software Engineer at <strong>VTEX</strong>, working on backend services and APIs for e-commerce, and a full stack engineer at <strong>EloGroup</strong> on systems for ONS, the operator of Brazil's power grid.",
+    "Outside work I build projects to understand things properly, like hexagonal architecture and GitOps, and write about them on DEV Community."
+  ],
+  jobs: [
+    { role: "Senior Software Engineer", company: "VTEX", when: "Sep 2026 – present",
+      text: "Backend development on VTEX's e-commerce platform.",
+      items: ["Backend features in Java", "Integrations between internal services and external APIs", "Automated tests and code review"],
+      stack: "Java, APIs, CI/CD" },
+    { role: "Full Stack Software Engineer", company: "EloGroup", when: "Nov 2025 – present",
+      text: "Consulting projects for large companies.",
+      items: ["ONS: front-end and back-end on internal systems", "Mosaic: end-to-end tests with Selenium across SAP and Salesforce integrations"],
+      stack: "Full stack, Selenium, SAP, Salesforce" },
+    { role: "Software Engineer (Contract)", company: "Tata Consultancy Services", when: "Aug 2025 – Dec 2025",
+      text: "Cloud project on AWS with a global team.",
+      items: ["CI/CD pipelines with Docker, Kubernetes and Terraform"],
+      stack: "AWS, Docker, Kubernetes, Terraform" },
+    { role: "QA Engineer", company: "3C Plus", when: "Jan 2025 – Nov 2025",
+      text: "Quality and test automation.",
+      items: ["End-to-end and API tests with Cypress and Selenium", "Automated tests running in the CI/CD pipeline", "Test plans and bug reports with the dev team"],
+      stack: "Cypress, Selenium, API testing, SQL" },
+    { role: "Software Engineer", company: "Capgemini", when: "Feb 2024 – Jan 2025",
+      text: "Backend Java development on enterprise projects.", items: [], stack: "Java" },
+    { role: "IT Support Technician", company: "Prefeitura de Guarapuava", when: "Jun 2023 – Feb 2024",
+      text: "Technical support for city hall staff.", items: [], stack: "" }
+  ],
+  projects: [
+    { title: "Hexagonal architecture in Python", year: "2026",
+      text: "Order management API built with ports and adapters. The database can be switched between PostgreSQL and in-memory with one environment variable, and a full CLI was added without changing a line of the domain. 53 tests, strict type checking and CI against a real Postgres.",
+      tags: ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "Docker"],
+      url: "https://github.com/Matheuskocotem/Hexagonal-Architecture-Ports-and-Adapters-/tree/main" },
+    { title: "Local GitOps platform", year: "2026",
+      text: "A three-node Kubernetes cluster provisioned with Terraform, with ArgoCD deploying from Git and self-healing manual changes. Prometheus and Grafana collect custom business metrics from a Spring Boot API.",
+      tags: ["Kubernetes", "ArgoCD", "Terraform", "Prometheus", "Spring Boot"],
+      url: "https://dev.to/m_kocotem_1b69865766c653/construindo-uma-plataforma-gitops-do-zero-kubernetes-argocd-terraform-e-observabilidade-34jh" }
+  ],
+  articles: [
+    { title: "Arquitetura Hexagonal em Python do zero: um domínio que não sabe onde mora nem quem o chama",
+      text: "Building an order management app with ports and adapters, then swapping the database and adding a CLI without touching the domain.",
+      date: "Sep 2026", where: "DEV Community",
+      url: "https://dev.to/m_kocotem_1b69865766c653/arquitetura-hexagonal-em-python-do-zero-um-dominio-que-nao-sabe-onde-mora-nem-quem-o-chama-2bfn" },
+    { title: "Construindo uma plataforma GitOps do zero: Kubernetes, ArgoCD, Terraform e Observabilidade",
+      text: "A local GitOps platform from scratch: Terraform for the cluster, ArgoCD for deploys, and custom metrics from Java in Grafana.",
+      date: "Jul 2026", where: "DEV Community",
+      url: "https://dev.to/m_kocotem_1b69865766c653/construindo-uma-plataforma-gitops-do-zero-kubernetes-argocd-terraform-e-observabilidade-34jh" },
+    { title: "Por que testes são essenciais no desenvolvimento de software?",
+      text: "Why automated tests matter, from someone who worked in QA before moving to development.",
+      date: "", where: "LinkedIn",
+      url: "https://www.linkedin.com/pulse/por-que-testes-s%C3%A3o-essenciais-desenvolvimento-de-dos-santos-kocotem-bwfie/" }
+  ],
+  skills: {
+    "Languages": ["Java", "Python", "JavaScript", "SQL"],
+    "Backend": ["Spring Boot", "FastAPI", "REST APIs", "PostgreSQL"],
+    "Testing": ["Selenium", "Cypress", "API testing"],
+    "Infra": ["Docker", "Kubernetes", "Terraform", "ArgoCD", "AWS"]
+  }
+};
+
+/* ===== Rendering ===== */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;" }[c]));
+const icons = {
+  github: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>',
+  linkedin: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M0 1.15C0 .52.52 0 1.18 0h13.64C15.48 0 16 .52 16 1.15v13.7c0 .63-.52 1.15-1.18 1.15H1.18C.52 16 0 15.48 0 14.85V1.15Zm4.94 12.24V6.17H2.54v7.22h2.4ZM3.74 5.18c.84 0 1.36-.55 1.36-1.25-.02-.71-.52-1.25-1.34-1.25-.82 0-1.36.54-1.36 1.25 0 .7.52 1.25 1.32 1.25h.02Zm4.9 8.21V9.36c0-.22.02-.43.08-.59.18-.43.57-.88 1.23-.88.87 0 1.22.66 1.22 1.63v3.87h2.4V9.25c0-2.22-1.18-3.25-2.76-3.25-1.3 0-1.87.72-2.2 1.22V6.17H6.24c.03.68 0 7.22 0 7.22h2.4Z"/></svg>',
+  mail: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 3h13c.28 0 .5.22.5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9c0-.28.22-.5.5-.5Zm.5 1.3V12h12V4.3L8 8.6 2 4.3Zm1.1-.3L8 7.4 12.9 4H3.1Z"/></svg>',
+  dev: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 2h13c.28 0 .5.22.5.5v11a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-11c0-.28.22-.5.5-.5Zm2.2 3.4v5.2h1.2c1.1 0 1.7-.6 1.7-1.6V7c0-1-.6-1.6-1.7-1.6H3.7Zm1 .9h.2c.4 0 .7.2.7.7v2c0 .5-.3.7-.7.7h-.2V6.3Zm2.9-.9v5.2h2.1v-.9H8.6V8.4h.9v-.9h-.9V6.3h1.1v-.9H7.6Zm2.8 0 1.1 5.2h.9l1.1-5.2h-1l-.55 2.9-.55-2.9h-1Z"/></svg>'
+};
+
+$("name").textContent = profile.name;
+$("role").textContent = profile.role;
+$("lede").textContent = profile.lede;
+$("place").textContent = profile.place;
+$("about-text").innerHTML = profile.about.map(p => `<p>${p}</p>`).join("");
+$("resume").href = profile.linkedin;
+$("social").innerHTML = `
+  <a href="${esc(profile.github)}" target="_blank" rel="noopener">${icons.github}GitHub</a>
+  <a href="${esc(profile.linkedin)}" target="_blank" rel="noopener">${icons.linkedin}LinkedIn</a>
+  <a href="${esc(profile.devto)}" target="_blank" rel="noopener">${icons.dev}DEV</a>
+  <a href="mailto:${esc(profile.email)}">${icons.mail}Email</a>
+  <button class="theme" id="themeBtn"></button>`;
+
+$("jobs").innerHTML = profile.jobs.map((j, i) => `
+  <li>
+    <button aria-expanded="false" aria-controls="job${i}">
+      <span class="pass">PASS</span>
+      <span><span class="co">${esc(j.company)}</span> <span class="ti">${esc(j.role)}</span><span class="arrow">›</span></span>
+      <span class="when">${esc(j.when)}</span>
+    </button>
+    <div class="detail" id="job${i}">
+      <div>${esc(j.text)}</div>
+      ${j.items.length ? `<ul>${j.items.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
+      ${j.stack ? `<div class="stack">${esc(j.stack)}</div>` : ""}
+    </div>
+  </li>`).join("");
+document.querySelectorAll(".jobs button").forEach(b => b.addEventListener("click", () => {
+  const li = b.parentElement; li.classList.toggle("open");
+  b.setAttribute("aria-expanded", li.classList.contains("open"));
+}));
+const first = document.querySelector(".jobs li"); first.classList.add("open"); first.querySelector("button").setAttribute("aria-expanded", "true");
+
+const start = new Date(2023, 5), now = new Date();
+const m = (now.getFullYear() - start.getFullYear()) * 12 + now.getMonth() - start.getMonth();
+$("summary").innerHTML = `Roles: <span class="ok">${profile.jobs.length} passed</span>, ${profile.jobs.length} total<br>Time:  ${Math.floor(m/12)} years, ${m%12} months`;
+
+const tagList = t => `<ul class="tags">${t.map(x => `<li>${esc(x)}</li>`).join("")}</ul>`;
+$("projects-list").innerHTML = profile.projects.map(p => `
+  <li class="row">
+    <div class="side-meta">${esc(p.year)}</div>
+    <div>
+      <h3><a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.title)}</a></h3>
+      <p>${esc(p.text)}</p>
+      ${tagList(p.tags)}
+    </div>
+  </li>`).join("");
+
+$("posts").innerHTML = profile.articles.map(a => `
+  <li class="row">
+    <div class="side-meta">${esc(a.date || a.where)}</div>
+    <div>
+      <h3><a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.title)}</a></h3>
+      <p>${esc(a.text)}</p>
+      <span class="small">${esc(a.where)}, in Portuguese</span>
+    </div>
+  </li>`).join("");
+
+$("skill-list").innerHTML = Object.entries(profile.skills).map(([k, v]) =>
+  `<div><h3>${esc(k)}</h3>${tagList(v)}</div>`).join("");
+
+$("footer").innerHTML = `© ${now.getFullYear()} ${esc(profile.name)}. The best way to reach me is by <a href="mailto:${esc(profile.email)}">email</a>.`;
+
+/* Active section in the left menu */
+const links = [...document.querySelectorAll(".toc a")];
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) {
+    links.forEach(l => l.classList.toggle("active", l.getAttribute("href") === "#" + e.target.id));
+  }});
+}, { rootMargin: "-35% 0px -60% 0px" });
+document.querySelectorAll("main section").forEach(s => obs.observe(s));
+
+/* Dark mode */
+const root = document.documentElement, btn = $("themeBtn");
+const isDark = () => root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+try { const t = localStorage.getItem("theme"); if (t) root.dataset.theme = t; } catch (e) {}
+const label = () => btn.textContent = isDark() ? "Light mode" : "Dark mode";
+label();
+btn.addEventListener("click", () => {
+  root.dataset.theme = isDark() ? "light" : "dark"; label();
+  try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+});
+</script>
+</body>
+</html>
